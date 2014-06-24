@@ -1,0 +1,8 @@
+00_os_update.sh
+01_disable_swappiness.sh
+02_disable_ipv6.sh
+04_update_timezone.sh
+#unmount_disks_worker.sh
+#05_create_disks_worker.sh
+09_set_limits.sh
+97_reboot.sh

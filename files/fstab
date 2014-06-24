@@ -1,0 +1,4 @@
+LABEL=cloudimg-rootfs	/	 ext4	defaults	0 0
+/dev/xvdb1	/mnt1	ext4	noatime,nodiratime	1	2
+/dev/xvdc1	/mnt2	ext4	noatime,nodiratime	1	2
+/mnt1/swapfile	none	swap	sw	0	0

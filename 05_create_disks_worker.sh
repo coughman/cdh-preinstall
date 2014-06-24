@@ -4,7 +4,7 @@
 apt-get -y install libwww-perl
 
 # unmount swap file if it exists
-SWAP_FILE=/mnt1/swapfile
+SWAP_FILE=/data1/swapfile
 if [[ -f $SWAP_FILE ]]; 
 	then
 	swapoff $SWAP_FILE
@@ -21,27 +21,33 @@ rm -rf /mnt
 # create partitions for disks
 sfdisk /dev/xvdb < cloudera/files/xvdb.layout
 sfdisk /dev/xvdc < cloudera/files/xvdc.layout
-
-#(echo n; echo p; echo 1; echo ; echo ; echo w) | fdisk /dev/xvdc
+sfdisk /dev/xvdd < cloudera/files/xvdd.layout
+sfdisk /dev/xvde < cloudera/files/xvde.layout
 
 # format them to ext4
 mkfs -t ext4 -m 0 -O dir_index,extent,sparse_super /dev/xvdb1
 mkfs -t ext4 -m 0 -O dir_index,extent,sparse_super /dev/xvdc1
+mkfs -t ext4 -m 0 -O dir_index,extent,sparse_super /dev/xvdd1
+mkfs -t ext4 -m 0 -O dir_index,extent,sparse_super /dev/xvde1
 
 # create mounts
-mkdir -p /mnt1
-mkdir -p /mnt2
+mkdir -p /data1
+mkdir -p /data2
+mkdir -p /data3
+mkdir -p /data4
 
 # update /etc/fstab
-if [[ -f cloudera/files/fstab ]] ;
+if [[ -f cloudera/files/fstab_worker ]];
 	then
 	mv /etc/fstab /etc/fstab.bak
-	mv cloudera/files/fstab /etc/fstab
+	mv cloudera/files/fstab_worker /etc/fstab
 fi
 
 # mount them
-mount /mnt1
-mount /mnt2
+mount /data1
+mount /data2
+mount /data3
+mount /data4
 
 # set up swap space (some ec2 instances do not have swap enabled by default)
 # assumption: /mnt is already mounted and it's instance storage

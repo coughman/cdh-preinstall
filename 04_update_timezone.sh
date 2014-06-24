@@ -1,9 +1,5 @@
-cp /etc/sysconfig/clock /etc/sysconfig/_clock.orig.`date +%d%m%y`
-cat > /etc/sysconfig/clock <<EOF
-ZONE="Australia/Sydney"
-UTC=True
-EOF
+echo "US/Eastern" | sudo tee /etc/timezone
+sudo dpkg-reconfigure --frontend noninteractive tzdata
 
-ln -sf /usr/share/zoneinfo/Australia/Sydney /etc/localtime
-chkconfig ntpd on
-service ntpd start
+sudo apt-get -y install ntp
+sudo service ntp start

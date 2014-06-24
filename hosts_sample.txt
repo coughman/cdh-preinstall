@@ -1,0 +1,1 @@
+# add your hosts here.  Put master and worker hosts in hosts_master.txt and hosts_worker.txt respectively

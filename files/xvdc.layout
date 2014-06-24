@@ -1,0 +1,6 @@
+unit: sectors
+
+/dev/xvdc1 : start=     2048, size= 78624768, Id=83
+/dev/xvdc2 : start=        0, size=        0, Id= 0
+/dev/xvdc3 : start=        0, size=        0, Id= 0
+/dev/xvdc4 : start=        0, size=        0, Id= 0
