@@ -19,10 +19,8 @@ fi
 rm -rf /mnt
 
 # create partitions for disks
-sfdisk /dev/xvdb < cloudera/files/xvdb.layout
-sfdisk /dev/xvdc < cloudera/files/xvdc.layout
-
-#(echo n; echo p; echo 1; echo ; echo ; echo w) | fdisk /dev/xvdc
+(echo n; echo p; echo 1; echo ; echo ; echo w) | fdisk /dev/xvdb
+(echo n; echo p; echo 1; echo ; echo ; echo w) | fdisk /dev/xvdc
 
 # format them to ext4
 mkfs -t ext4 -m 0 -O dir_index,extent,sparse_super /dev/xvdb1
@@ -33,10 +31,10 @@ mkdir -p /mnt1
 mkdir -p /mnt2
 
 # update /etc/fstab
-if [[ -f cloudera/files/fstab ]] ;
+if [[ -f cloudera/files/fstab_master ]] ;
 	then
 	mv /etc/fstab /etc/fstab.bak
-	mv cloudera/files/fstab /etc/fstab
+	mv cloudera/files/fstab_master /etc/fstab
 fi
 
 # mount them

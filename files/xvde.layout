@@ -1,6 +1,0 @@
-unit: sectors
-
-/dev/xvde1 : start=     2048, size= 83884032, Id=83
-/dev/xvde2 : start=        0, size=        0, Id= 0
-/dev/xvde3 : start=        0, size=        0, Id= 0
-/dev/xvde4 : start=        0, size=        0, Id= 0

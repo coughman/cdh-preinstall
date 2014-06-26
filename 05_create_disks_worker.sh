@@ -19,10 +19,10 @@ fi
 rm -rf /mnt
 
 # create partitions for disks
-sfdisk /dev/xvdb < cloudera/files/xvdb.layout
-sfdisk /dev/xvdc < cloudera/files/xvdc.layout
-sfdisk /dev/xvdd < cloudera/files/xvdd.layout
-sfdisk /dev/xvde < cloudera/files/xvde.layout
+(echo n; echo p; echo 1; echo ; echo ; echo w) | fdisk /dev/xvdb
+(echo n; echo p; echo 1; echo ; echo ; echo w) | fdisk /dev/xvdc
+(echo n; echo p; echo 1; echo ; echo ; echo w) | fdisk /dev/xvdd
+(echo n; echo p; echo 1; echo ; echo ; echo w) | fdisk /dev/xvde
 
 # format them to ext4
 mkfs -t ext4 -m 0 -O dir_index,extent,sparse_super /dev/xvdb1
