@@ -5,4 +5,5 @@
 #unmount_disks.sh
 05_create_disks_master.sh
 09_set_limits.sh
+96_install_custom_libs.sh
 97_reboot.sh
