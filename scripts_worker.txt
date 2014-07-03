@@ -1,4 +1,5 @@
 00_os_update.sh
+install_python_dependencies.sh
 01_disable_swappiness.sh
 02_disable_ipv6.sh
 04_update_timezone.sh
